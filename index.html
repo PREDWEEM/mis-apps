@@ -1,212 +1,343 @@
-# ================================================================
-# 🌾 PREDWEEM — Landing Page Streamlit (VERSIÓN COMPATIBLE)
-# Sin scripts, sin grid CSS, sin estilos globales
-# ================================================================
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
 
-import streamlit as st
-from pathlib import Path
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PREDWEEM · Predictive Weed Emergence Models</title>
 
-# ----------------------------
-# CONFIG
-# ----------------------------
-st.set_page_config(
-    page_title="PREDWEEM – Predictive Weed Emergence Models",
-    layout="wide"
-)
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-# ----------------------------
-# ESTILOS PERMITIDOS
-# ----------------------------
-st.markdown("""
-<style>
-.card {
-    background: #ffffff;
-    border: 1px solid #e0e6db;
-    padding: 18px;
-    border-radius: 14px;
-    margin-bottom: 16px;
-}
-.btn {
-    display: inline-block;
-    background: #4CAF50;
-    padding: 8px 14px;
-    border-radius: 8px;
-    color: white !important;
-    text-decoration: none;
-    font-weight: 600;
-}
-.btn-secondary {
-    background: #2e5e2d !important;
-}
-.center {
-    text-align:center;
-}
-h1, h2, h3 {
-    color: #2e5e2d;
-}
-</style>
-""", unsafe_allow_html=True)
-
-# ----------------------------
-# SELECTOR DE IDIOMA
-# ----------------------------
-if "lang" not in st.session_state:
-    st.session_state.lang = "es"
-
-col_es, col_en = st.columns(2)
-if col_es.button("🇦🇷 Español"):
-    st.session_state.lang = "es"
-
-if col_en.button("🇺🇸 English"):
-    st.session_state.lang = "en"
-
-LANG = st.session_state.lang
-
-# ----------------------------
-# TRADUCCIONES
-# ----------------------------
-T = {
-    "es": {
-        "title": "📊 PREDWEEM – Modelos Predictivos de Emergencia",
-        "subtitle": "Herramientas para la gestión sustentable en la región pampeana",
-        "intro": """
-        Este portal reúne modelos de emergencia desarrollados por la UNS y el INTA.
-        Cargue datos meteorológicos o utilice los provistos automáticamente
-        para obtener emergencia diaria y emergencia acumulada (2025).
-        """,
-        "models": "Modelos disponibles",
-        "guide": "Guía de uso",
-        "team": "Equipo",
-        "inst": "Instituciones",
-        "contact": "Consultas o contacto",
-        "open": "Abrir app"
-    },
-    "en": {
-        "title": "📊 PREDWEEM – Predictive Weed Emergence Models",
-        "subtitle": "Decision tools for sustainable management in the Pampas region",
-        "intro": """
-        This portal contains weed emergence models developed by UNS & INTA.
-        Upload weather data or use automatic sources to obtain daily and
-        cumulative emergence (2025).
-        """,
-        "models": "Available models",
-        "guide": "User guide",
-        "team": "Team",
-        "inst": "Institutions",
-        "contact": "Contact",
-        "open": "Open app"
+  <style>
+    :root{
+      --bg:#f8f9f4; 
+      --card:#ffffff; 
+      --text:#243024; 
+      --muted:#5b6b5b;
+      --primary:#2e5e2d; 
+      --accent:#4CAF50; 
+      --border:#e0e6db; 
+      --link:#1e6fe0;
     }
-}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,"Segoe UI",sans-serif;line-height:1.55}
+    img{max-width:100%;height:auto;border-radius:12px}
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
 
-tr = lambda x: T[LANG][x]
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .brand{display:flex;gap:14px;align-items:center}
 
-# ================================================================
-# PORTADA
-# ================================================================
-st.title(tr("title"))
-st.subheader(tr("subtitle"))
-st.write(tr("intro"))
+    .logo{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,#2e5e2d,#6fbf73)}
 
-st.image("austral.png", width=500)
+    h1{font-size:28px;color:var(--primary);margin:0}
+    .subtitle{margin:4px 0 0 0;color:var(--muted)}
 
-# ================================================================
-# MODELOS
-# ================================================================
-st.markdown(f"## {tr('models')}")
+    .lang{display:flex;gap:8px;align-items:center}
+    .lang button{
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:999px;
+      padding:6px 10px;
+      cursor:pointer;
+    }
+    .lang button.active{
+      background:var(--primary);
+      color:#fff;
+      border-color:var(--primary)
+    }
 
-models = [
-    ("Lolium sp. BORDENAVE–2025", "lolium.jpeg",
-     "https://appemergenciapy-lscuxqt2j3sa9yjrwgyqnh.streamlit.app/"),
-    ("Lolium sp. TRES ARROYOS–2025", "lolium.jpeg",
-     "https://appemergenciapy-pfj3sr8shtoqcucopfmkat.streamlit.app/"),
-    ("Avena fatua BORDENAVE–2025", "AVEFA.jpg",
-     "https://appemergenciapy-mp6o4yjxbxctoekktcradc.streamlit.app/"),
-    ("Hirshfeldia incana BORDENAVE–2025", "hirsin.png",
-     "https://u2tod53cwpaeqmlqpmp2of.streamlit.app/"),
-    ("Euphorbia davidii BORDENAVE–2025", "EUPHO.jpg",
-     "https://appemergenciaapppy-gfda7txzhpsf2ahkcmv7h5.streamlit.app/"),
-    ("Euphorbia davidii BAHÍA BLANCA–2025", "EUPHO.jpg",
-     "https://appemergenciaapppy-ah6c82sgacq2d7z2i5uptl.streamlit.app/"),
-    ("Euphorbia davidii OLAVARRÍA–2025", "EUPHO.jpg",
-     "https://appemergenciaapppy-v3dns5cft6ws9p9jdhzepj.streamlit.app/")
-]
+    .hero{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+      align-items:center;
+      margin:10px 0 22px
+    }
+    .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
 
-# Render en filas de 3
-for i in range(0, len(models), 3):
-    cols = st.columns(3)
-    for col, (name, img, url) in zip(cols, models[i:i+3]):
-        with col:
-            st.markdown('<div class="card">', unsafe_allow_html=True)
-            st.image(img, use_column_width=True)
-            st.markdown(f"**{name}**")
-            st.markdown(f'<a class="btn" target="_blank" href="{url}">{tr("open")}</a>',
-                        unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
+    .btn{
+      display:inline-block;
+      background:var(--accent);
+      color:#fff;
+      border:none;
+      border-radius:12px;
+      padding:10px 14px;
+      font-weight:600;
+      cursor:pointer
+    }
+    .btn.secondary{background:#2e5e2d}
 
-# ================================================================
-# GUÍA
-# ================================================================
-st.markdown(f"## {tr('guide')}")
-st.write("""
-1️⃣ **Cargar datos meteorológicos**  
-Columnas: *Julian_days, TMAX, TMIN, Prec*  
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px
+    }
 
-2️⃣ **Ver resultados**  
-Emergencia relativa (EMERREL) y Emergencia acumulada (EMERAC).  
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 
-3️⃣ **Descargar CSV**  
-Exportación completa lista para análisis.
-""")
+    .section{margin:18px 0}
+    .section h2{color:var(--primary);margin:0 0 8px}
 
-st.image("pipa.png", width=450)
-st.image("ac.png", width=450)
+    footer{
+      margin-top:26px;
+      padding-top:16px;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      text-align:center;
+    }
 
-# ================================================================
-# EQUIPO
-# ================================================================
-st.markdown(f"## {tr('team')}")
+    @media (max-width:960px){
+      .grid{grid-template-columns:1fr}
+      .grid-2,.grid-4{grid-template-columns:1fr}
+      .hero{grid-template-columns:1fr}
+    }
+  </style>
+</head>
 
-cols = st.columns(5)
-imgs = [
-    ("FOTO.jpg", "Ing. Agr. (Dr.) Guillermo R. Chantre"),
-    ("Luis.JPG", "Ing. Agr. (Dr.) Luis M. Carretto"),
-    ("ramon.jpeg", "Ing. Agr. Ramón Gigon"),
-    ("mario.jpeg", "Ing. Agr. Mario R. Vigna"),
-    ("fede.jpg", "Ing. Agr. Federico Nuñez-Fré")
-]
+<body>
+  <div class="container">
+    
+    <header>
+      <div class="brand">
+        <div class="logo"></div>
+        <div>
+          <h1 data-i18n="title">📊 PREDWEEM – Modelos Predictivos</h1>
+          <p class="subtitle" data-i18n="subtitle">Herramientas de apoyo a la decisión</p>
+        </div>
+      </div>
 
-for col, (img, name) in zip(cols, imgs):
-    col.image(img, caption=name)
+      <div class="lang">
+        <button id="btn-es">ES</button>
+        <button id="btn-en" class="active">EN</button>
+      </div>
+    </header>
 
-# ================================================================
-# INSTITUCIONES
-# ================================================================
-st.markdown(f"## {tr('inst')}")
 
-cols = st.columns(4)
-inst_imgs = ["descarga.jpg", "cerzos.jpg", "inta.png", "BCP_3-100.jpg"]
-for col, img in zip(cols, inst_imgs):
-    col.image(img)
+    <!-- ======================================================= -->
+    <!-- PORTADA -->
+    <!-- ======================================================= -->
+    <section class="hero">
+      <div class="card">
+        <p data-i18n="hero_text">
+          Portal de modelos de emergencia desarrollados por UNS e INTA. 
+          Permite cargar datos meteorológicos propios y obtener 
+          emergencia diaria y acumulada (2025).
+        </p>
+        <div class="cta">
+          <a class="btn" href="#models" data-i18n="cta_models">Ver modelos</a>
+          <a class="btn secondary" href="#guide" data-i18n="cta_guide">Guía de uso</a>
+          <a class="btn" href="plantilla_predweem.xlsx" download data-i18n="cta_template">Descargar plantilla</a>
+        </div>
+      </div>
 
-# ================================================================
-# CONTACTO
-# ================================================================
-st.markdown(f"## {tr('contact')}")
+      <figure>
+        <img src="austral.png" alt="Mapa" />
+      </figure>
+    </section>
 
-with st.form("contact_form"):
-    name = st.text_input("Nombre / Name")
-    email = st.text_input("Email")
-    msg = st.text_area("Mensaje / Message")
 
-    if st.form_submit_button("Enviar"):
-        st.success("Mensaje enviado correctamente. ¡Gracias!")
+    <!-- ======================================================= -->
+    <!-- MODELOS -->
+    <!-- ======================================================= -->
+    <section id="models" class="section">
+      <h2 data-i18n="models_h2">Modelos</h2>
 
-# ================================================================
-# FOOTER
-# ================================================================
-st.markdown("""
-<div class="center" style="margin-top:30px;color:#5b6b5b;">
-© 2025 PREDWEEM · Todos los derechos reservados.
-</div>
-""", unsafe_allow_html=True)
+      <div class="grid">
+
+        <article class="card">
+          <img src="lolium.jpeg" alt="">
+          <div data-i18n="model1_title"><strong>🧠 Lolium Bordenave</strong></div>
+          <a class="btn" target="_blank" href="https://appemergenciapy-lscuxqt2j3sa9yjrwgyqnh.streamlit.app/?embed=true" data-i18n="open_app">Abrir app</a>
+        </article>
+
+        <article class="card">
+          <img src="lolium.jpeg" alt="">
+          <div data-i18n="model2_title"><strong>🧠 Lolium Tres Arroyos</strong></div>
+          <a class="btn" target="_blank" href="https://appemergenciapy-pfj3sr8shtoqcucopfmkat.streamlit.app/?embed=true" data-i18n="open_app">Abrir app</a>
+        </article>
+
+        <article class="card">
+          <img src="AVEFA.jpg" alt="">
+          <div data-i18n="model3_title"><strong>🧠 Avena fatua Bordenave</strong></div>
+          <a class="btn" target="_blank" href="https://appemergenciapy-mp6o4yjxbxctoekktcradc.streamlit.app/?embed=true" data-i18n="open_app">Abrir app</a>
+        </article>
+
+        <article class="card">
+          <img src="hirsin.png" alt="">
+          <div data-i18n="model4_title"><strong>🧠 Hirshfeldia incana</strong></div>
+          <a class="btn" target="_blank" href="https://u2tod53cwpaeqmlqpmp2of.streamlit.app/?embed=true" data-i18n="open_app">Abrir app</a>
+        </article>
+
+        <article class="card">
+          <img src="EUPHO.jpg" alt="">
+          <div data-i18n="model5_title"><strong>🧠 Euphorbia davidii Bordenave</strong></div>
+          <a class="btn" target="_blank" href="https://appemergenciaapppy-gfda7txzhpsf2ahkcmv7h5.streamlit.app/?embed=true" data-i18n="open_app">Abrir app</a>
+        </article>
+
+        <article class="card">
+          <img src="EUPHO.jpg" alt="">
+          <div data-i18n="model6_title"><strong>🧠 Euphorbia Bahia Blanca</strong></div>
+          <a class="btn" target="_blank" href="https://appemergenciaapppy-ah6c82sgacq2d7z2i5uptl.streamlit.app/?embed=true" data-i18n="open_app">Abrir app</a>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================================= -->
+    <!-- GUÍA -->
+    <!-- ======================================================= -->
+    <section id="guide" class="section">
+      <h2 data-i18n="guide_h2">Guía</h2>
+
+      <div class="grid-2">
+        <div class="card">
+          <p>
+            <strong>1️⃣ Cargar datos</strong><br>
+            Formato Excel: Julian_days · TMAX · TMIN · Prec
+          </p>
+          <p>
+            <strong>2️⃣ Ver resultados</strong><br>
+            Emergencia diaria y acumulada (%).
+          </p>
+          <p>
+            <strong>3️⃣ Descargar CSV</strong><br>
+            Tabla completa para análisis.
+          </p>
+        </div>
+
+        <figure class="card">
+          <img src="pipa.png" alt="">
+        </figure>
+      </div>
+    </section>
+
+
+    <!-- ======================================================= -->
+    <!-- EQUIPO -->
+    <!-- ======================================================= -->
+    <section class="section">
+      <h2 data-i18n="team_h2">Equipo</h2>
+
+      <div class="grid-4">
+
+        <figure class="card">
+          <img src="FOTO.jpg" alt="">
+          <figcaption><strong>Guillermo R. Chantre</strong><br>UNS · CERZOS</figcaption>
+        </figure>
+
+        <figure class="card">
+          <img src="Luis.JPG" alt="">
+          <figcaption><strong>Luis M. Carretto</strong><br>INTA Bordenave</figcaption>
+        </figure>
+
+        <figure class="card">
+          <img src="ramon.jpeg" alt="">
+          <figcaption><strong>Ramón Gigon</strong><br>RG Malezas</figcaption>
+        </figure>
+
+        <figure class="card">
+          <img src="mario.jpeg" alt="">
+          <figcaption><strong>Mario R. Vigna</strong><br>CIC · Asesor privado</figcaption>
+        </figure>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================================= -->
+    <!-- INSTITUCIONES -->
+    <!-- ======================================================= -->
+    <section class="section">
+      <h2 data-i18n="inst_h2">Instituciones</h2>
+
+      <div class="grid-4">
+        <figure class="card"><img src="descarga.jpg" alt=""></figure>
+        <figure class="card"><img src="cerzos.jpg" alt=""></figure>
+        <figure class="card"><img src="inta.png" alt=""></figure>
+        <figure class="card"><img src="BCP_3-100.jpg" alt=""></figure>
+      </div>
+    </section>
+
+
+    <!-- ======================================================= -->
+    <!-- CONTACTO (FORMULARIO LOCAL) -->
+    <!-- ======================================================= -->
+    <section class="section">
+      <h2 data-i18n="contact_h2">Contacto</h2>
+
+      <div class="card">
+        <p>Este formulario no envía emails (compatibilidad Streamlit).<br>
+        Si querés puedo agregar envío vía API o backend Python.</p>
+
+        <label>Nombre:</label><br>
+        <input style="width:100%;padding:6px;border:1px solid var(--border);border-radius:6px;"><br><br>
+
+        <label>Email:</label><br>
+        <input style="width:100%;padding:6px;border:1px solid var(--border);border-radius:6px;"><br><br>
+
+        <label>Mensaje:</label><br>
+        <textarea rows="3" style="width:100%;padding:6px;border:1px solid var(--border);border-radius:6px;"></textarea><br><br>
+
+        <button class="btn">Enviar</button>
+      </div>
+    </section>
+
+
+    <footer>© 2025 PREDWEEM · Todos los derechos reservados.</footer>
+
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- SCRIPT PEQUEÑO PARA I18N (permitido en Streamlit) -->
+  <!-- ======================================================= -->
+  <script>
+    const dict = {
+      es: {
+        title:"📊 PREDWEEM – Modelos Predictivos de Emergencia",
+        subtitle:"Herramientas de apoyo a la decisión",
+        hero_text:"Modelos desarrollados por UNS e INTA...",
+        models_h2:"Modelos",
+        open_app:"Abrir app",
+        guide_h2:"Guía de uso",
+        team_h2:"Equipo",
+        inst_h2:"Instituciones",
+        contact_h2:"Contacto",
+      },
+      en: {
+        title:"📊 PREDWEEM – Predictive Weed Emergence Models",
+        subtitle:"Decision-support tools",
+        hero_text:"Models developed by UNS & INTA...",
+        models_h2:"Models",
+        open_app:"Open app",
+        guide_h2:"User guide",
+        team_h2:"Team",
+        inst_h2:"Institutions",
+        contact_h2:"Contact",
+      }
+    };
+
+    function setLang(lang){
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if(dict[lang][key]) el.innerHTML = dict[lang][key];
+      });
+      document.getElementById("btn-es").classList.toggle("active", lang==="es");
+      document.getElementById("btn-en").classList.toggle("active", lang==="en");
+    }
+
+    document.getElementById("btn-es").onclick = ()=> setLang("es");
+    document.getElementById("btn-en").onclick = ()=> setLang("en");
+
+    setLang("en");
+  </script>
+
+</body>
+</html>
 
