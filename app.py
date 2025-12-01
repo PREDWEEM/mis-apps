@@ -173,23 +173,7 @@ try:
                 )
                 st.markdown('</div>', unsafe_allow_html=True)
 
-    # -----------------------------------------------------
-    # GUÍA DE USO
-    # -----------------------------------------------------
-    st.markdown(f"### {tr('guide')}")
-    st.write(
-        "- Formato de archivo: Excel (.xlsx)\n"
-        "- Columnas requeridas: `Julian_days`, `TMAX`, `TMIN`, `Prec`\n"
-        "- Salidas: EMERREL diaria y EMERAC acumulada, con fecha calendario."
-    )
-
-    for img_name in ["pipa.png", "ac.png"]:
-        try:
-            st.image(img_name, width=400)
-        except Exception:
-            st.write(f"(No se pudo cargar {img_name}, opcional)")
-
-    # -----------------------------------------------------
+       # -----------------------------------------------------
     # EQUIPO
     # -----------------------------------------------------
     st.markdown(f"### {tr('team')}")
