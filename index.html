@@ -1,64 +1,234 @@
+# ================================================================
+# 🌾 PREDWEEM — Landing Page compatible con Streamlit
+# Versión profesional basada en tu HTML original
+# ================================================================
+
 import streamlit as st
+from pathlib import Path
 
-html_code = """
-<div style="max-width:1080px;margin:auto;padding:20px;font-family:Inter, sans-serif;">
+# ---------------------------------------------------------------
+# CONFIGURACIÓN DE PÁGINA
+# ---------------------------------------------------------------
+st.set_page_config(
+    page_title="PREDWEEM – Predictive Weed Emergence Models",
+    layout="wide",
+)
 
-  <h1 style="color:#2f5f2f;margin-bottom:4px;">📊 PREDWEEM</h1>
-  <p style="color:#6b6b6b;margin-top:0;">Predictive Weed Emergence Models</p>
+# ---------------------------------------------------------------
+# CSS (adaptado de tu HTML original)
+# ---------------------------------------------------------------
+st.markdown("""
+<style>
+:root{
+  --bg:#f8f9f4; --card:#ffffff; --text:#243024; --muted:#5b6b5b;
+  --primary:#2e5e2d; --accent:#4CAF50; --border:#e0e6db; --link:#1e6fe0;
+}
+html, body, .stApp {
+  background: var(--bg);
+  font-family: Inter, sans-serif;
+  color: var(--text);
+}
+h1, h2, h3 { color: var(--primary); }
+.card {
+  background: var(--card);
+  border:1px solid var(--border);
+  padding:18px;
+  border-radius:16px;
+}
+.btn {
+  display:inline-block;
+  background:var(--accent);
+  padding:10px 14px;
+  border-radius:12px;
+  color:white !important;
+  text-decoration:none;
+  font-weight:600;
+}
+.btn-secondary {
+  background:#2e5e2d !important;
+}
+.model-img {
+  width:100%;
+  border-radius:12px;
+  margin-bottom:8px;
+}
+footer {
+  text-align:center;
+  margin-top:32px;
+  padding-top:16px;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+}
+</style>
+""", unsafe_allow_html=True)
 
-  <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:30px;">
-      <div style="flex:1;min-width:280px;background:white;padding:20px;border:1px solid #e6e6e6;border-radius:14px;">
-         <p>
-         Predictive models developed by UNS & INTA.  
-         Upload meteorological data or use automatic sources to obtain 
-         <strong>daily emergence risk</strong> and 
-         <strong>cumulative emergence (%)</strong>.
-         </p>
-      </div>
 
-      <img src="https://raw.githubusercontent.com/PREDWEEM/mis-apps/main/austral.png"
-           style="flex:1;min-width:260px;border-radius:14px;max-width:100%;"/>
-  </div>
+# ---------------------------------------------------------------
+# SELECTOR DE IDIOMA (STATEFUL)
+# ---------------------------------------------------------------
+if "lang" not in st.session_state:
+    st.session_state.lang = "es" if st.session_state.get("preferred_lang", "es") == "es" else "en"
 
-  <h2 style="color:#2f5f2f;margin-top:40px;">Models</h2>
+colA, colB = st.columns([1, 8])
+with colA:
+    if st.button("ES 🇦🇷"):
+        st.session_state.lang = "es"
+    if st.button("EN 🇺🇸"):
+        st.session_state.lang = "en"
 
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;">
+LANG = st.session_state.lang
 
-    <div style="background:white;border:1px solid #e6e6e6;border-radius:14px;padding:14px;">
-      <img src="https://raw.githubusercontent.com/PREDWEEM/mis-apps/main/lolium.jpeg" style="width:100%;border-radius:14px;" />
-      <p style="font-weight:600;margin:10px 0 14px;">🧠 Lolium sp. BORDENAVE – 2025</p>
-      <a href="https://appemergenciapy-lscuxqt2j3sa9yjrwgyqnh.streamlit.app/?embed=true"
-         target="_blank"
-         style="background:#2f5f2f;color:white;padding:8px 14px;border-radius:10px;text-decoration:none;">
-         Open
-      </a>
-    </div>
 
-    <div style="background:white;border:1px solid #e6e6e6;border-radius:14px;padding:14px;">
-      <img src="https://raw.githubusercontent.com/PREDWEEM/mis-apps/main/lolium.jpeg" style="width:100%;border-radius:14px;" />
-      <p style="font-weight:600;margin:10px 0 14px;">🧠 Lolium sp. TRES ARROYOS – 2025</p>
-      <a href="https://appemergenciapy-pfj3sr8shtoqcucopfmkat.streamlit.app/?embed=true"
-         target="_blank"
-         style="background:#2f5f2f;color:white;padding:8px 14px;border-radius:10px;text-decoration:none;">
-         Open
-      </a>
-    </div>
+# ================================================================
+# 🧩 DICCIONARIO DE TRADUCCIÓN
+# ================================================================
+T = {
+    "es": {
+        "title": "📊 PREDWEEM – Modelos Predictivos de Emergencia de Malezas",
+        "subtitle": "Herramientas para la gestión sustentable en la región pampeana",
+        "intro": """Este portal reúne modelos de emergencia desarrollados por la UNS y el INTA.
+Use datos meteorológicos provistos automáticamente o cargue datos propios para obtener
+emergencia diaria y emergencia acumulada 2025.""",
+        "models": "Modelos",
+        "guide": "Guía de uso",
+        "team": "Desarrollador y colaboradores",
+        "inst": "Instituciones colaboradoras",
+        "contact": "Consultas o comentarios",
+    },
+    "en": {
+        "title": "📊 PREDWEEM – Predictive Weed Emergence Models",
+        "subtitle": "Decision tools for sustainable management in the Pampas region",
+        "intro": """This portal contains weed emergence models developed jointly by UNS and INTA.
+Upload weather data to obtain daily relative emergence and cumulative emergence 2025.""",
+        "models": "Models",
+        "guide": "User guide",
+        "team": "Developer & contributors",
+        "inst": "Collaborating institutions",
+        "contact": "Inquiries or comments",
+    }
+}
 
-  </div>
+tr = lambda k: T[LANG][k]
 
-  <h2 style="color:#2f5f2f;margin-top:40px;">Collaborating Institutions</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;">
-      <img src="https://raw.githubusercontent.com/PREDWEEM/mis-apps/main/descarga.jpg" style="width:100%;border-radius:12px;">
-      <img src="https://raw.githubusercontent.com/PREDWEEM/mis-apps/main/cerzos.jpg" style="width:100%;border-radius:12px;">
-      <img src="https://raw.githubusercontent.com/PREDWEEM/mis-apps/main/inta.png" style="width:100%;border-radius:12px;">
-      <img src="https://raw.githubusercontent.com/PREDWEEM/mis-apps/main/BCP_3-100.jpg" style="width:100%;border-radius:12px;">
-  </div>
 
-  <footer style="margin-top:40px;color:#6b6b6b;font-size:13px;text-align:center;">
-    © 2025 Guillermo R. Chantre · PREDWEEM
-  </footer>
-</div>
-"""
+# ================================================================
+# 🔝 PORTADA
+# ================================================================
+st.markdown(f"""
+# {tr("title")}
+### {tr("subtitle")}
+""")
 
-st.components.v1.html(html_code, height=2000, scrolling=True)
+st.write(tr("intro"))
 
+st.image("austral.png", width=500)
+
+
+# ================================================================
+# 🧠 MODELOS
+# ================================================================
+st.markdown(f"## {tr('models')}")
+
+cols = st.columns(3)
+
+models = [
+    ("Lolium sp. BORDENAVE–2025", "lolium.jpeg",
+     "https://appemergenciapy-lscuxqt2j3sa9yjrwgyqnh.streamlit.app/?embed=true"),
+    ("Lolium sp. TRES ARROYOS–2025", "lolium.jpeg",
+     "https://appemergenciapy-pfj3sr8shtoqcucopfmkat.streamlit.app/?embed=true"),
+    ("Avena fatua BORDENAVE–2025", "AVEFA.jpg",
+     "https://appemergenciapy-mp6o4yjxbxctoekktcradc.streamlit.app/?embed=true"),
+    ("Hirshfeldia incana BORDENAVE–2025", "hirsin.png",
+     "https://u2tod53cwpaeqmlqpmp2of.streamlit.app/?embed=true"),
+    ("Euphorbia davidii BORDENAVE–2025", "EUPHO.jpg",
+     "https://appemergenciaapppy-gfda7txzhpsf2ahkcmv7h5.streamlit.app/?embed=true"),
+    ("Euphorbia davidii BAHÍA BLANCA–2025", "EUPHO.jpg",
+     "https://appemergenciaapppy-ah6c82sgacq2d7z2i5uptl.streamlit.app/?embed=true"),
+    ("Euphorbia davidii OLAVARRÍA–2025", "EUPHO.jpg",
+     "https://appemergenciaapppy-v3dns5cft6ws9p9jdhzepj.streamlit.app/?embed=true"),
+]
+
+# Render dinámico en grilla
+for i, (name, img, link) in enumerate(models):
+    with cols[i % 3]:
+        st.markdown('<div class="card">', unsafe_allow_html=True)
+        st.image(img, use_column_width=True)
+        st.markdown(f"**{name}**")
+        st.markdown(f'<a class="btn" href="{link}" target="_blank">Abrir app</a>',
+                    unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+
+
+# ================================================================
+# 📘 GUÍA DE USO
+# ================================================================
+st.markdown(f"## {tr('guide')}")
+
+st.markdown("""
+### 1️⃣ Cargar datos meteorológicos
+- Formato: Excel (.xlsx)  
+- Columnas exactas: **Julian_days, TMAX, TMIN, Prec**
+
+### 2️⃣ Visualizar resultados
+- EMERREL diaria  
+- EMERAC acumulada  
+- Fecha calendario + JD
+
+### 3️⃣ Descargar resultados
+- CSV con EMERREL y EMERAC
+""")
+
+st.image("pipa.png", width=450)
+st.image("ac.png", width=450)
+
+
+# ================================================================
+# 🎯 EQUIPO
+# ================================================================
+st.markdown(f"## {tr('team')}")
+
+c1, c2, c3, c4, c5 = st.columns(5)
+
+c1.image("FOTO.jpg", caption="Ing. Agr. (Dr.) G. R. Chantre")
+c2.image("Luis.JPG", caption="Ing. Agr. (Dr.) Luis M. Carretto")
+c3.image("ramon.jpeg", caption="Ing. Agr. Ramón Gigon")
+c4.image("mario.jpeg", caption="Ing. Agr. Mario R. Vigna")
+c5.image("fede.jpg", caption="Ing. Agr. Federico Núñez-Fré")
+
+
+# ================================================================
+# 🏛 INSTITUCIONES
+# ================================================================
+st.markdown(f"## {tr('inst')}")
+
+c1, c2, c3, c4 = st.columns(4)
+c1.image("descarga.jpg")
+c2.image("cerzos.jpg")
+c3.image("inta.png")
+c4.image("BCP_3-100.jpg")
+
+
+# ================================================================
+# 📩 CONTACTO (FORMULARIO STREAMLIT)
+# ================================================================
+st.markdown(f"## {tr('contact')}")
+
+with st.form("contact_form"):
+    name = st.text_input("Nombre:")
+    email = st.text_input("Correo:")
+    topic = st.selectbox("Motivo:", ["Soporte", "Sugerencia", "Error/Bug", "Colaboración", "Otro"])
+    msg = st.text_area("Mensaje:")
+
+    submitted = st.form_submit_button("Enviar")
+    if submitted:
+        st.success("Mensaje enviado. ¡Gracias!")
+
+
+# ================================================================
+# FOOTER
+# ================================================================
+st.markdown("""
+<footer>
+© 2025 Guillermo R. Chantre · PREDWEEM. All rights reserved.
+</footer>
+""", unsafe_allow_html=True)
