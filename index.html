@@ -1,1 +1,228 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PREDWEEM – Predictive Weed Emergence</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg:#fafafa;
+    --card:#ffffff;
+    --text:#1f1f1f;
+    --sub:#6b6b6b;
+    --primary:#2f5f2f;
+    --border:#e6e6e6;
+    --radius:14px;
+  }
+
+  body {
+    margin:0; padding:0;
+    font-family: Inter, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+  }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+
+  header {
+    padding: 12px 0;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+  }
+
+  .brand-title {
+    font-size: 24px;
+    font-weight: 700;
+    color:var(--primary);
+    margin:0;
+  }
+
+  .sub {
+    color:var(--sub);
+    font-size: 14px;
+    margin-top:2px;
+  }
+
+  .hero {
+    margin: 28px 0;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:26px;
+  }
+
+  .hero-card {
+    background: var(--card);
+    border:1px solid var(--border);
+    padding:24px;
+    border-radius:var(--radius);
+  }
+
+  h2 {
+    margin:30px 0 10px;
+    font-size:22px;
+    color:var(--primary);
+  }
+
+  .grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+    gap:16px;
+  }
+
+  .card {
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:14px;
+    border-radius:var(--radius);
+  }
+
+  .card img {
+    width:100%;
+    border-radius:var(--radius);
+    aspect-ratio: 16/10;
+    object-fit:cover;
+  }
+
+  .model-title {
+    margin:10px 0 8px;
+    font-weight:600;
+  }
+
+  .btn {
+    display:inline-block;
+    background:var(--primary);
+    color:white;
+    padding:8px 14px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+  }
+
+  footer {
+    margin-top:40px;
+    padding-top:18px;
+    border-top:1px solid var(--border);
+    text-align:center;
+    color:var(--sub);
+    font-size:13px;
+  }
+
+  @media (max-width:900px) {
+    .hero { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <div>
+    <h1 class="brand-title">📊 PREDWEEM</h1>
+    <p class="sub">Predictive Weed Emergence Models</p>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-card">
+    <p>
+      Predictive models of weed emergence developed by the Dept. of Agronomy (UNS) 
+      and INTA.  
+      Use automatically provided meteorological data or upload your local dataset 
+      to obtain <strong>daily emergence risk</strong> and 
+      <strong>cumulative emergence curves</strong>.
+    </p>
+  </div>
+
+  <img src="austral.png" style="width:100%; border-radius:var(--radius);" />
+</section>
+
+<h2>Models</h2>
+<div class="grid">
+
+  <div class="card">
+    <img src="lolium.jpeg" />
+    <div class="model-title">🧠 Lolium sp. BORDENAVE–2025</div>
+    <a class="btn" target="_blank" 
+       href="https://appemergenciapy-lscuxqt2j3sa9yjrwgyqnh.streamlit.app/?embed=true">
+       Open
+    </a>
+  </div>
+
+  <div class="card">
+    <img src="lolium.jpeg" />
+    <div class="model-title">🧠 Lolium sp. TRES ARROYOS–2025</div>
+    <a class="btn" target="_blank" 
+       href="https://appemergenciapy-pfj3sr8shtoqcucopfmkat.streamlit.app/?embed=true">
+       Open
+    </a>
+  </div>
+
+  <div class="card">
+    <img src="AVEFA.jpg" />
+    <div class="model-title">🧠 Avena fatua BORDENAVE–2025</div>
+    <a class="btn" target="_blank" 
+       href="https://appemergenciapy-mp6o4yjxbxctoekktcradc.streamlit.app/?embed=true">
+       Open
+    </a>
+  </div>
+
+  <div class="card">
+    <img src="hirsin.png" />
+    <div class="model-title">🧠 Hirschfeldia incana BORDENAVE–2025</div>
+    <a class="btn" target="_blank" 
+       href="https://u2tod53cwpaeqmlqpmp2of.streamlit.app/?embed=true">
+       Open
+    </a>
+  </div>
+
+</div>
+
+<h2>Collaborating Institutions</h2>
+<div class="grid">
+  <div class="card"><img src="descarga.jpg"></div>
+  <div class="card"><img src="cerzos.jpg"></div>
+  <div class="card"><img src="inta.png"></div>
+  <div class="card"><img src="BCP_3-100.jpg"></div>
+</div>
+
+<h2>Team</h2>
+<div class="grid">
+  <div class="card">
+    <img src="FOTO.jpg">
+    <p><strong>Ing. Agr. (Dr.) Guillermo R. Chantre</strong><br>UNS · CERZOS</p>
+  </div>
+  <div class="card">
+    <img src="Luis.JPG">
+    <p><strong>Ing. Agr. (Dr.) Luis M. Carretto</strong><br>INTA Bordenave</p>
+  </div>
+  <div class="card">
+    <img src="ramon.jpeg">
+    <p><strong>Ing. Agr. (MSc.) Ramón Gigon</strong><br>Tres Arroyos</p>
+  </div>
+  <div class="card">
+    <img src="mario.jpeg">
+    <p><strong>Ing. Agr. (MSc.) Mario Vigna</strong><br>Asesor privado</p>
+  </div>
+</div>
+
+<footer>
+  © 2025 Guillermo R. Chantre · PREDWEEM
+</footer>
+
+</div>
+</body>
+</html>
