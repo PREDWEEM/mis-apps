@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Interactivo de la Provincia de Buenos Aires</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        #map { height: 600px; width: 100%; }
+    </style>
+</head>
+<body>
+    <h1>Mapa de la Provincia de Buenos Aires</h1>
+    <p>Haz clic en los marcadores para acceder a distintas apps/enlaces relacionados con cada localidad.</p>
+    <div id="map"></div>
 
+    <script>
+        // Inicializar el mapa centrado en la Provincia de Buenos Aires
+        var map = L.map('map').setView([-38.0, -60.0], 7); // Centro aproximado y zoom para cubrir la provincia
+
+        // Agregar capa de mapa base de OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Marcador para Bordenave
+        L.marker([-37.8036, -63.041]).addTo(map)
+            .bindPopup('Bordenave<br><a href="https://en.wikipedia.org/wiki/Buenos_Aires_Province" target="_blank">Acceder a App 1 (Wikipedia Provincia)</a>')
+            .on('click', function() {
+                window.open('https://en.wikipedia.org/wiki/Buenos_Aires_Province', '_blank');
+            });
+
+        // Marcador para Tres Arroyos
+        L.marker([-38.377, -60.276]).addTo(map)
+            .bindPopup('Tres Arroyos<br><a href="https://en.wikipedia.org/wiki/Tres_Arroyos" target="_blank">Acceder a App 2 (Wikipedia Ciudad)</a>')
+            .on('click', function() {
+                window.open('https://en.wikipedia.org/wiki/Tres_Arroyos', '_blank');
+            });
+
+        // Marcador para Balcarce
+        L.marker([-37.846, -58.258]).addTo(map)
+            .bindPopup('Balcarce<br><a href="https://en.wikipedia.org/wiki/Balcarce,_Buenos_Aires" target="_blank">Acceder a App 3 (Wikipedia Ciudad)</a>')
+            .on('click', function() {
+                window.open('https://en.wikipedia.org/wiki/Balcarce,_Buenos_Aires', '_blank');
+            });
+
+        // Marcador para Bahía Blanca (nuevo)
+        L.marker([-38.7196, -62.2724]).addTo(map)
+            .bindPopup('Bahía Blanca<br><a href="https://en.wikipedia.org/wiki/Bah%C3%ADa_Blanca" target="_blank">Acceder a App 4 (Wikipedia Ciudad)</a>')
+            .on('click', function() {
+                window.open('https://en.wikipedia.org/wiki/Bah%C3%ADa_Blanca', '_blank');
+            });
+
+        // Opcional: Agregar un polígono aproximado para los límites de la provincia (simplificado)
+        var provinceBounds = [
+            [-34.5, -58.5], // Norte
+            [-35.0, -63.0], // Oeste
+            [-41.0, -62.0], // Sur
+            [-38.0, -57.0]  // Este (costa)
+        ];
+        L.polygon(provinceBounds, {color: 'blue', fillOpacity: 0.1}).addTo(map);
+    </script>
+</body>
+</html>
