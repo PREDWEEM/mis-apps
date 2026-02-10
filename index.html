@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREDWEEM: MODELO PREDICTIVO DE EMERGENCIA Y FENOLOGIA DE LOLIUM MULTIFLORUM</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        #map { height: 600px; width: 100%; }
+    </style>
+</head>
+<body>
+    <h1>PREDWEEM: MODELO PREDICTIVO DE EMERGENCIA Y FENOLOGIA DE LOLIUM MULTIFLORUM</h1>
+    <p>Haz clic en los marcadores para acceder a pronósticos de emergencia y fenología de cada localidad. El nombre de cada ciudad aparece sobre el marcador.</p>
+    <div id="map"></div>
+
+    <script>
+        var map = L.map('map').setView([-38.0, -60.0], 7);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Bordenave
+        L.marker([-37.8036, -63.041]).addTo(map)
+            .bindTooltip('Bordenave', {permanent: true, direction: 'top', offset: L.point(0, -10)})
+            .bindPopup('Bordenave<br><a href="https://appemergenciacombinadopy-pft4j4e33dvonn4jsryzte.streamlit.app/" target="_blank">Acceder a App Emergencia Combinada</a>')
+            .on('click', function() {
+                window.open('https://appemergenciacombinadopy-pft4j4e33dvonn4jsryzte.streamlit.app/', '_blank');
+            });
+
+        // Tres Arroyos
+        L.marker([-38.377, -60.276]).addTo(map)
+            .bindTooltip('Tres Arroyos', {permanent: true, direction: 'top', offset: L.point(0, -10)})
+            .bindPopup('Tres Arroyos<br><a href="https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/" target="_blank">Acceder a App Emergencia</a>')
+            .on('click', function() {
+                window.open('https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/', '_blank');
+            });
+
+        // Balcarce
+        L.marker([-37.846, -58.258]).addTo(map)
+            .bindTooltip('Balcarce', {permanent: true, direction: 'top', offset: L.point(0, -10)})
+            .bindPopup('Balcarce<br><a href="https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/" target="_blank">Acceder a App Emergencia Combinada</a>')
+            .on('click', function() {
+                window.open('https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/', '_blank');
+            });
+
+        // Bahía Blanca
+        L.marker([-38.7196, -62.2724]).addTo(map)
+            .bindTooltip('Bahía Blanca', {permanent: true, direction: 'top', offset: L.point(0, -10)})
+            .bindPopup('Bahía Blanca<br><a href="https://appemergenciapy-ejmxey8erpj3mb8s3dnavx.streamlit.app/" target="_blank">Acceder a App Emergencia</a>')
+            .on('click', function() {
+                window.open('https://appemergenciapy-ejmxey8erpj3mb8s3dnavx.streamlit.app/', '_blank');
+            });
+
+        var provinceBounds = [
+            [-34.5, -58.5], [-35.0, -63.0], [-41.0, -62.0], [-38.0, -57.0]
+        ];
+        L.polygon(provinceBounds, {color: 'blue', fillOpacity: 0.1}).addTo(map);
+    </script>
+</body>
+</html>
