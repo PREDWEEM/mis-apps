@@ -5,78 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PREDWEEM: Modelo Predictivo de Emergencia y Fenología de Lolium multiflorum</title>
 
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <!-- Font Awesome para iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-4c2QGtN1+O2L1y5y4I2T8pB6Qz3Xq9+0f9T5u9mV2z5L5L5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5
 
     <style>
         body {
-            background: linear-gradient(to bottom, #f0f7f4, #e8f5e9);
-            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to bottom, #f8fff9, #e8f5e9);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #2d3436;
         }
         .hero {
-            background: linear-gradient(rgba(46, 125, 50, 0.85), rgba(27, 94, 32, 0.9)), url('https://images.unsplash.com/photo-1500384066616-8a8d547abfc9?ixlib=rb-4.0.3&auto=format&fit=crop&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(to bottom, #2e7d32, #1b5e20);
             color: white;
-            padding: 100px 0;
+            padding: 120px 0 100px;
             text-align: center;
         }
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: 3.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
         .hero p.lead {
-            font-size: 1.4rem;
-            max-width: 800px;
-            margin: 20px auto;
+            font-size: 1.5rem;
+            max-width: 900px;
+            margin: 25px auto;
+            opacity: 0.95;
         }
         #map {
             height: 650px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+            margin-bottom: 2rem;
         }
         .card-location {
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
+            transition: all 0.3s ease;
         }
         .card-location:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.22);
         }
         .leaflet-tooltip-permanent {
-            font-weight: bold;
-            background: rgba(76, 175, 80, 0.9);
+            background: rgba(46, 125, 50, 0.95);
             border: none;
             color: white;
-            font-size: 1rem;
-            padding: 6px 12px;
-            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 8px 14px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         footer {
-            background: #2e7d32;
+            background: #1b5e20;
             color: white;
-            padding: 30px 0;
-            margin-top: 80px;
+            padding: 40px 0;
+            margin-top: 100px;
+        }
+        .github-badge {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
+
+    <!-- GitHub ribbon (opcional, para repos públicos) -->
+    <a href="https://github.com/TU_USUARIO/TU_REPOSITORIO" class="github-badge" target="_blank">
+        <img loading="lazy" width="149" height="149" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Fork me on GitHub">
+    </a>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>PREDWEEM</h1>
             <p class="lead">
-                Modelo Predictivo de Emergencia y Fenología de <strong>Lolium multiflorum</strong><br>
-                Herramienta moderna para la toma de decisiones agronómicas precisas y oportunas
+                Modelo Predictivo de Emergencia y Fenología de <strong>Lolium multiflorum</strong>
             </p>
             <p class="mt-4">
-                Optimice el manejo de ryegrass resistente: timing de aplicaciones, siembra y control integrado.
+                Herramienta para optimizar el manejo agronómico del ryegrass resistente en el sudeste bonaerense.<br>
+                Timing preciso de aplicaciones, siembra y control integrado.
             </p>
         </div>
     </section>
@@ -86,14 +98,14 @@
         <div class="row">
             <div class="col-lg-10 mx-auto">
                 <div class="card border-0 shadow-lg">
-                    <div class="card-body p-4">
+                    <div class="card-body p-5">
                         <h4 class="card-title text-center mb-4">
-                            <i class="fas fa-map-marker-alt text-success me-2"></i>
-                            Seleccione una localidad en el mapa
+                            <i class="fas fa-map-marked-alt text-success me-2"></i>
+                            Mapa interactivo de localidades
                         </h4>
                         <p class="text-center text-muted mb-4">
-                            Haga clic en los marcadores para acceder a los pronósticos predictivos específicos de cada zona.<br>
-                            Las aplicaciones le proporcionarán datos de emergencia, etapas fenológicas y recomendaciones para decisiones agronómicas.
+                            Haga clic en los marcadores para acceder a los pronósticos predictivos de emergencia y fenología.<br>
+                            También puede usar las tarjetas inferiores para acceso directo.
                         </p>
                         <div id="map"></div>
                     </div>
@@ -101,44 +113,44 @@
             </div>
         </div>
 
-        <!-- Cards de localidades (alternativa clicable) -->
-        <div class="row mt-5">
+        <!-- Tarjetas de localidades -->
+        <div class="row mt-5 g-4">
             <div class="col-12">
-                <h4 class="text-center mb-4">Localidades disponibles</h4>
+                <h4 class="text-center mb-4">Acceso directo por localidad</h4>
             </div>
             <div class="col-md-3">
-                <div class="card card-location text-center border-0 shadow" onclick="window.open('https://appemergenciacombinadopy-pft4j4e33dvonn4jsryzte.streamlit.app/', '_blank')">
-                    <div class="card-body">
-                        <i class="fas fa-seedling fa-3x text-success mb-3"></i>
-                        <h5>Bordenave</h5>
-                        <small>App Emergencia Combinada</small>
+                <div class="card card-location text-center border-0 shadow h-100" onclick="window.open('https://appemergenciacombinadopy-pft4j4e33dvonn4jsryzte.streamlit.app/', '_blank')">
+                    <div class="card-body d-flex flex-column justify-content-center">
+                        <i class="fas fa-seedling fa-4x text-success mb-3"></i>
+                        <h5 class="card-title">Bordenave</h5>
+                        <small class="text-muted">App Emergencia Combinada</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card card-location text-center border-0 shadow" onclick="window.open('https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/', '_blank')">
-                    <div class="card-body">
-                        <i class="fas fa-seedling fa-3x text-success mb-3"></i>
-                        <h5>Tres Arroyos</h5>
-                        <small>App Emergencia</small>
+                <div class="card card-location text-center border-0 shadow h-100" onclick="window.open('https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/', '_blank')">
+                    <div class="card-body d-flex flex-column justify-content-center">
+                        <i class="fas fa-seedling fa-4x text-success mb-3"></i>
+                        <h5 class="card-title">Tres Arroyos</h5>
+                        <small class="text-muted">App Emergencia</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card card-location text-center border-0 shadow" onclick="window.open('https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/', '_blank')">
-                    <div class="card-body">
-                        <i class="fas fa-seedling fa-3x text-success mb-3"></i>
-                        <h5>Balcarce</h5>
-                        <small>App Emergencia Combinada</small>
+                <div class="card card-location text-center border-0 shadow h-100" onclick="window.open('https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/', '_blank')">
+                    <div class="card-body d-flex flex-column justify-content-center">
+                        <i class="fas fa-seedling fa-4x text-success mb-3"></i>
+                        <h5 class="card-title">Balcarce</h5>
+                        <small class="text-muted">App Emergencia Combinada</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card card-location text-center border-0 shadow" onclick="window.open('https://appemergenciapy-ejmxey8erpj3mb8s3dnavx.streamlit.app/', '_blank')">
-                    <div class="card-body">
-                        <i class="fas fa-seedling fa-3x text-success mb-3"></i>
-                        <h5>Bahía Blanca</h5>
-                        <small>App Emergencia</small>
+                <div class="card card-location text-center border-0 shadow h-100" onclick="window.open('https://appemergenciapy-ejmxey8erpj3mb8s3dnavx.streamlit.app/', '_blank')">
+                    <div class="card-body d-flex flex-column justify-content-center">
+                        <i class="fas fa-seedling fa-4x text-success mb-3"></i>
+                        <h5 class="card-title">Bahía Blanca</h5>
+                        <small class="text-muted">App Emergencia</small>
                     </div>
                 </div>
             </div>
@@ -148,17 +160,17 @@
         <div class="row mt-5">
             <div class="col-lg-10 mx-auto">
                 <div class="card border-0 shadow">
-                    <div class="card-body">
-                        <h4 class="card-title text-center">
+                    <div class="card-body p-5">
+                        <h4 class="card-title text-center mb-4">
                             <i class="fas fa-chart-line text-success me-2"></i>
                             Beneficios para la toma de decisiones agronómicas
                         </h4>
-                        <ul class="list-group list-group-flush mt-3">
-                            <li class="list-group-item">Predicción precisa de fechas de emergencia para planificar aplicaciones pre-emergentes.</li>
-                            <li class="list-group-item">Seguimiento fenológico en tiempo real para optimizar el timing de herbicidas post-emergentes.</li>
-                            <li class="list-group-item">Reducción del uso de agroquímicos mediante aplicaciones oportunas y eficientes.</li>
-                            <li class="list-group-item">Mejor planificación de siembra y rotaciones de cultivos.</li>
-                            <li class="list-group-item">Herramienta basada en datos climáticos y modelos validados científicamente.</li>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item py-3">Predicción precisa de fechas de emergencia y etapas fenológicas</li>
+                            <li class="list-group-item py-3">Optimización del timing de aplicaciones pre y post-emergentes</li>
+                            <li class="list-group-item py-3">Reducción del uso de agroquímicos mediante aplicaciones más eficientes</li>
+                            <li class="list-group-item py-3">Mejor planificación de siembra y rotaciones</li>
+                            <li class="list-group-item py-3">Basado en datos climáticos locales y modelos validados</li>
                         </ul>
                     </div>
                 </div>
@@ -169,13 +181,13 @@
     <!-- Footer -->
     <footer class="text-center">
         <div class="container">
-            <p class="mb-0">© 2026 PREDWEEM — Herramienta desarrollada para apoyar la agricultura sostenible</p>
-            <small>Modelo predictivo basado en datos agroclimáticos locales</small>
+            <p class="mb-1">© 2026 PREDWEEM — Herramienta para agricultura sostenible</p>
+            <small>Desarrollado con tecnologías open source • Compatible con GitHub Pages</small>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script>
         const map = L.map('map').setView([-38.0, -60.0], 7);
 
@@ -192,10 +204,10 @@
                 className: 'leaflet-tooltip-permanent'
             });
             marker.bindPopup(`
-                <div class="text-center p-2">
-                    <h6 class="mb-2"><strong>${name}</strong></h6>
-                    <a href="${url}" target="_blank" class="btn btn-success btn-sm">
-                        <i class="fas fa-external-link-alt me-1"></i> Acceder a ${appName}
+                <div class="text-center p-3">
+                    <h6 class="mb-3 fw-bold">${name}</h6>
+                    <a href="${url}" target="_blank" class="btn btn-success">
+                        <i class="fas fa-external-link-alt me-2"></i> Acceder a ${appName}
                     </a>
                 </div>
             `);
