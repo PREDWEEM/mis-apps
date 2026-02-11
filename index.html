@@ -3,225 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PREDWEEM: Modelo Predictivo de Emergencia y Fenología de Lolium multiflorum</title>
-
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-4c2QGtN1+O2L1y5y4I2T8pB6Qz3Xq9+0f9T5u9mV2z5L5L5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5u5
-
+    <title>PREDWEEM: MODELO PREDICTIVO DE EMERGENCIA Y FENOLOGIA DE LOLIUM MULTIFLORUM</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <style>
-        body {
-            background: linear-gradient(to bottom, #f8fff9, #e8f5e9);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: #2d3436;
-        }
-        .hero {
-            background: linear-gradient(to bottom, #2e7d32, #1b5e20);
-            color: white;
-            padding: 120px 0 100px;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 3.8rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-        .hero p.lead {
-            font-size: 1.5rem;
-            max-width: 900px;
-            margin: 25px auto;
-            opacity: 0.95;
-        }
-        #map {
-            height: 650px;
-            border-radius: 16px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.18);
-            margin-bottom: 2rem;
-        }
-        .card-location {
-            transition: all 0.3s ease;
-        }
-        .card-location:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.22);
-        }
-        .leaflet-tooltip-permanent {
-            background: rgba(46, 125, 50, 0.95);
-            border: none;
-            color: white;
-            font-weight: bold;
-            font-size: 1.1rem;
-            padding: 8px 14px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        footer {
-            background: #1b5e20;
-            color: white;
-            padding: 40px 0;
-            margin-top: 100px;
-        }
-        .github-badge {
-            position: fixed;
-            top: 0;
-            right: 0;
-            z-index: 1000;
-        }
+        #map { height: 600px; width: 100%; }
     </style>
 </head>
 <body>
+    <h1>PREDWEEM: MODELO PREDICTIVO DE EMERGENCIA Y FENOLOGIA DE LOLIUM MULTIFLORUM</h1>
+    <p>Haz clic en los marcadores para acceder a pronósticos de emergencia y fenología de cada localidad. El nombre de cada ciudad aparece sobre el marcador.</p>
+    <div id="map"></div>
 
-    <!-- GitHub ribbon (opcional, para repos públicos) -->
-    <a href="https://github.com/TU_USUARIO/TU_REPOSITORIO" class="github-badge" target="_blank">
-        <img loading="lazy" width="149" height="149" src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="Fork me on GitHub">
-    </a>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>PREDWEEM</h1>
-            <p class="lead">
-                Modelo Predictivo de Emergencia y Fenología de <strong>Lolium multiflorum</strong>
-            </p>
-            <p class="mt-4">
-                Herramienta para optimizar el manejo agronómico del ryegrass resistente en el sudeste bonaerense.<br>
-                Timing preciso de aplicaciones, siembra y control integrado.
-            </p>
-        </div>
-    </section>
-
-    <!-- Main Container -->
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-lg-10 mx-auto">
-                <div class="card border-0 shadow-lg">
-                    <div class="card-body p-5">
-                        <h4 class="card-title text-center mb-4">
-                            <i class="fas fa-map-marked-alt text-success me-2"></i>
-                            Mapa interactivo de localidades
-                        </h4>
-                        <p class="text-center text-muted mb-4">
-                            Haga clic en los marcadores para acceder a los pronósticos predictivos de emergencia y fenología.<br>
-                            También puede usar las tarjetas inferiores para acceso directo.
-                        </p>
-                        <div id="map"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tarjetas de localidades -->
-        <div class="row mt-5 g-4">
-            <div class="col-12">
-                <h4 class="text-center mb-4">Acceso directo por localidad</h4>
-            </div>
-            <div class="col-md-3">
-                <div class="card card-location text-center border-0 shadow h-100" onclick="window.open('https://appemergenciacombinadopy-pft4j4e33dvonn4jsryzte.streamlit.app/', '_blank')">
-                    <div class="card-body d-flex flex-column justify-content-center">
-                        <i class="fas fa-seedling fa-4x text-success mb-3"></i>
-                        <h5 class="card-title">Bordenave</h5>
-                        <small class="text-muted">App Emergencia Combinada</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card card-location text-center border-0 shadow h-100" onclick="window.open('https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/', '_blank')">
-                    <div class="card-body d-flex flex-column justify-content-center">
-                        <i class="fas fa-seedling fa-4x text-success mb-3"></i>
-                        <h5 class="card-title">Tres Arroyos</h5>
-                        <small class="text-muted">App Emergencia</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card card-location text-center border-0 shadow h-100" onclick="window.open('https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/', '_blank')">
-                    <div class="card-body d-flex flex-column justify-content-center">
-                        <i class="fas fa-seedling fa-4x text-success mb-3"></i>
-                        <h5 class="card-title">Balcarce</h5>
-                        <small class="text-muted">App Emergencia Combinada</small>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card card-location text-center border-0 shadow h-100" onclick="window.open('https://appemergenciapy-ejmxey8erpj3mb8s3dnavx.streamlit.app/', '_blank')">
-                    <div class="card-body d-flex flex-column justify-content-center">
-                        <i class="fas fa-seedling fa-4x text-success mb-3"></i>
-                        <h5 class="card-title">Bahía Blanca</h5>
-                        <small class="text-muted">App Emergencia</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Beneficios -->
-        <div class="row mt-5">
-            <div class="col-lg-10 mx-auto">
-                <div class="card border-0 shadow">
-                    <div class="card-body p-5">
-                        <h4 class="card-title text-center mb-4">
-                            <i class="fas fa-chart-line text-success me-2"></i>
-                            Beneficios para la toma de decisiones agronómicas
-                        </h4>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item py-3">Predicción precisa de fechas de emergencia y etapas fenológicas</li>
-                            <li class="list-group-item py-3">Optimización del timing de aplicaciones pre y post-emergentes</li>
-                            <li class="list-group-item py-3">Reducción del uso de agroquímicos mediante aplicaciones más eficientes</li>
-                            <li class="list-group-item py-3">Mejor planificación de siembra y rotaciones</li>
-                            <li class="list-group-item py-3">Basado en datos climáticos locales y modelos validados</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="text-center">
-        <div class="container">
-            <p class="mb-1">© 2026 PREDWEEM — Herramienta para agricultura sostenible</p>
-            <small>Desarrollado con tecnologías open source • Compatible con GitHub Pages</small>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script>
-        const map = L.map('map').setView([-38.0, -60.0], 7);
+        var map = L.map('map').setView([-38.0, -60.0], 7);
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        function addMarker(lat, lng, name, url, appName) {
-            const marker = L.marker([lat, lng]).addTo(map);
-            marker.bindTooltip(name, {
-                permanent: true,
-                direction: 'top',
-                offset: [0, -10],
-                className: 'leaflet-tooltip-permanent'
+        // Bordenave
+        L.marker([-37.8036, -63.041]).addTo(map)
+            .bindTooltip('Bordenave', {permanent: true, direction: 'top', offset: L.point(0, -10)})
+            .bindPopup('Bordenave<br><a href="https://appemergenciacombinadopy-pft4j4e33dvonn4jsryzte.streamlit.app/" target="_blank">Acceder a App Emergencia Combinada</a>')
+            .on('click', function() {
+                window.open('https://appemergenciacombinadopy-pft4j4e33dvonn4jsryzte.streamlit.app/', '_blank');
             });
-            marker.bindPopup(`
-                <div class="text-center p-3">
-                    <h6 class="mb-3 fw-bold">${name}</h6>
-                    <a href="${url}" target="_blank" class="btn btn-success">
-                        <i class="fas fa-external-link-alt me-2"></i> Acceder a ${appName}
-                    </a>
-                </div>
-            `);
-            marker.on('click', () => window.open(url, '_blank'));
-        }
 
-        addMarker(-37.8036, -63.041, 'Bordenave', 'https://appemergenciacombinadopy-pft4j4e33dvonn4jsryzte.streamlit.app/', 'App Emergencia Combinada');
-        addMarker(-38.377, -60.276, 'Tres Arroyos', 'https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/', 'App Emergencia');
-        addMarker(-37.846, -58.258, 'Balcarce', 'https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/', 'App Emergencia Combinada');
-        addMarker(-38.7196, -62.2724, 'Bahía Blanca', 'https://appemergenciapy-ejmxey8erpj3mb8s3dnavx.streamlit.app/', 'App Emergencia');
+        // Tres Arroyos
+        L.marker([-38.377, -60.276]).addTo(map)
+            .bindTooltip('Tres Arroyos', {permanent: true, direction: 'top', offset: L.point(0, -10)})
+            .bindPopup('Tres Arroyos<br><a href="https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/" target="_blank">Acceder a App Emergencia</a>')
+            .on('click', function() {
+                window.open('https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/', '_blank');
+            });
 
-        const provinceBounds = [[-34.5, -58.5], [-35.0, -63.0], [-41.0, -62.0], [-38.0, -57.0]];
-        L.polygon(provinceBounds, {color: '#2e7d32', weight: 4, fillOpacity: 0.08}).addTo(map);
-        map.fitBounds(provinceBounds);
+        // Balcarce
+        L.marker([-37.846, -58.258]).addTo(map)
+            .bindTooltip('Balcarce', {permanent: true, direction: 'top', offset: L.point(0, -10)})
+            .bindPopup('Balcarce<br><a href="https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/" target="_blank">Acceder a App Emergencia Combinada</a>')
+            .on('click', function() {
+                window.open('https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/', '_blank');
+            });
+
+        // Bahía Blanca
+        L.marker([-38.7196, -62.2724]).addTo(map)
+            .bindTooltip('Bahía Blanca', {permanent: true, direction: 'top', offset: L.point(0, -10)})
+            .bindPopup('Bahía Blanca<br><a href="https://appemergenciapy-ejmxey8erpj3mb8s3dnavx.streamlit.app/" target="_blank">Acceder a App Emergencia</a>')
+            .on('click', function() {
+                window.open('https://appemergenciapy-ejmxey8erpj3mb8s3dnavx.streamlit.app/', '_blank');
+            });
+
+        var provinceBounds = [
+            [-34.5, -58.5], [-35.0, -63.0], [-41.0, -62.0], [-38.0, -57.0]
+        ];
+        L.polygon(provinceBounds, {color: 'blue', fillOpacity: 0.1}).addTo(map);
     </script>
 </body>
 </html>
