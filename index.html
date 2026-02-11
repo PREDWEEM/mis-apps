@@ -1,235 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>PREDWEEM | Decisiones para manejo de Lolium</title>
-  <meta name="description" content="Portal de toma de decisiones para manejo de Lolium multiflorum: emergencia, fenología y ventanas de control por localidad." />
-
-  <!-- Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <script defer src="assets/js/app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREDWEEM: MODELO PREDICTIVO DE EMERGENCIA Y FENOLOGIA DE LOLIUM MULTIFLORUM</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        #map { height: 600px; width: 100%; }
+    </style>
 </head>
-
 <body>
-  <header class="header">
-    <div class="container header__inner">
-      <a class="brand" href="#top" aria-label="PREDWEEM">
-        <span class="brand__mark">🌾</span>
-        <span class="brand__text">
-          <strong>PREDWEEM</strong>
-          <small>Decisión • Emergencia • Fenología</small>
-        </span>
-      </a>
+    <h1>PREDWEEM: MODELO PREDICTIVO DE EMERGENCIA Y FENOLOGIA DE LOLIUM MULTIFLORUM</h1>
+    <p>Haz clic en los marcadores para acceder a pronósticos de emergencia y fenología de cada localidad. El nombre de cada ciudad aparece sobre el marcador.</p>
+    <div id="map"></div>
 
-      <nav class="nav">
-        <a href="#workflow">Cómo decidir</a>
-        <a href="#localidades">Localidades</a>
-        <a href="#mapa">Mapa</a>
-        <a href="#about">Acerca</a>
-      </nav>
+    <script>
+        var map = L.map('map').setView([-38.0, -60.0], 7);
 
-      <div class="header__actions">
-        <button id="themeToggle" class="btn btn--ghost" type="button" aria-label="Cambiar tema">
-          <span class="icon">🌓</span>
-          <span class="hide-sm">Tema</span>
-        </button>
-        <a class="btn btn--primary" href="#localidades">Ir a pronósticos</a>
-      </div>
-    </div>
-  </header>
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-  <main id="top">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__content">
-          <p class="badge">Portal de decisión • Lolium multiflorum</p>
-          <h1>Tomá decisiones <span class="grad">con ventanas de control</span> basadas en predicción de emergencia y avance fenológico.</h1>
-          <p class="lead">
-            Unificá pronósticos por localidad, monitoreo operativo y acceso directo a tus apps Streamlit.
-            Diseñado para uso agronómico: rápido, claro y accionable.
-          </p>
+        // Bordenave
+        L.marker([-37.8036, -63.041]).addTo(map)
+            .bindTooltip('Bordenave', {permanent: true, direction: 'top', offset: L.point(0, -10)})
+            .bindPopup('Bordenave<br><a href="https://appemergenciacombinadopy-pft4j4e33dvonn4jsryzte.streamlit.app/" target="_blank">Acceder a App Emergencia Combinada</a>')
+            .on('click', function() {
+                window.open('https://appemergenciacombinadopy-pft4j4e33dvonn4jsryzte.streamlit.app/', '_blank');
+            });
 
-          <div class="hero__cta">
-            <a class="btn btn--primary" href="#localidades">Elegir localidad</a>
-            <a class="btn btn--ghost" href="#workflow">Ver workflow</a>
-          </div>
+        // Tres Arroyos
+        L.marker([-38.377, -60.276]).addTo(map)
+            .bindTooltip('Tres Arroyos', {permanent: true, direction: 'top', offset: L.point(0, -10)})
+            .bindPopup('Tres Arroyos<br><a href="https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/" target="_blank">Acceder a App Emergencia</a>')
+            .on('click', function() {
+                window.open('https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/', '_blank');
+            });
 
-          <div class="kpis">
-            <div class="kpi">
-              <div class="kpi__label">Objetivo</div>
-              <div class="kpi__value">Decisión diaria</div>
-              <div class="kpi__hint">Semáforos + acceso directo</div>
-            </div>
-            <div class="kpi">
-              <div class="kpi__label">Enfoque</div>
-              <div class="kpi__value">Emergencia + Fenología</div>
-              <div class="kpi__hint">TT / umbrales operativos</div>
-            </div>
-            <div class="kpi">
-              <div class="kpi__label">Cobertura</div>
-              <div class="kpi__value">Sitios BA</div>
-              <div class="kpi__hint">Bordenave • Tres Arroyos • Balcarce • Bahía</div>
-            </div>
-          </div>
-        </div>
+        // Balcarce
+        L.marker([-37.846, -58.258]).addTo(map)
+            .bindTooltip('Balcarce', {permanent: true, direction: 'top', offset: L.point(0, -10)})
+            .bindPopup('Balcarce<br><a href="https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/" target="_blank">Acceder a App Emergencia Combinada</a>')
+            .on('click', function() {
+                window.open('https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/', '_blank');
+            });
 
-        <div class="hero__panel">
-          <div class="panel">
-            <div class="panel__header">
-              <h2>Acceso rápido</h2>
-              <p>Seleccioná una localidad y abrí el pronóstico.</p>
-            </div>
+        // Bahía Blanca
+        L.marker([-38.7196, -62.2724]).addTo(map)
+            .bindTooltip('Bahía Blanca', {permanent: true, direction: 'top', offset: L.point(0, -10)})
+            .bindPopup('Bahía Blanca<br><a href="https://appemergenciapy-ejmxey8erpj3mb8s3dnavx.streamlit.app/" target="_blank">Acceder a App Emergencia</a>')
+            .on('click', function() {
+                window.open('https://appemergenciapy-ejmxey8erpj3mb8s3dnavx.streamlit.app/', '_blank');
+            });
 
-            <div class="panel__body">
-              <label class="field">
-                <span>Localidad</span>
-                <select id="siteSelect">
-                  <option value="bordenave">Bordenave</option>
-                  <option value="tresarroyos">Tres Arroyos</option>
-                  <option value="balcarce">Balcarce</option>
-                  <option value="bahiablanca">Bahía Blanca</option>
-                </select>
-              </label>
-
-              <div class="panel__buttons">
-                <button id="openSite" class="btn btn--primary" type="button">Abrir pronóstico</button>
-                <button id="flyToSite" class="btn btn--ghost" type="button">Ver en mapa</button>
-              </div>
-
-              <div class="note">
-                <strong>Tip:</strong> usá el mapa para comparar contexto regional y entrar a cada app con 1 click.
-              </div>
-            </div>
-          </div>
-
-          <div class="panel panel--soft">
-            <h3>Qué resuelve este portal</h3>
-            <ul class="checklist">
-              <li>Centraliza acceso a pronósticos por localidad</li>
-              <li>Reduce fricción operativa (del mapa al pronóstico)</li>
-              <li>Enmarca la decisión (workflow y criterios)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WORKFLOW -->
-    <section id="workflow" class="section">
-      <div class="container">
-        <div class="section__head">
-          <h2>Workflow de decisión (operativo)</h2>
-          <p>Una guía simple para convertir el pronóstico en acción de manejo.</p>
-        </div>
-
-        <div class="steps">
-          <article class="step">
-            <div class="step__num">1</div>
-            <h3>Elegí localidad</h3>
-            <p>Seleccioná tu zona y abrí la app correspondiente.</p>
-          </article>
-          <article class="step">
-            <div class="step__num">2</div>
-            <h3>Leé el riesgo</h3>
-            <p>Identificá el estado: inicio de emergencia, pico, pos-emergencia y tendencias.</p>
-          </article>
-          <article class="step">
-            <div class="step__num">3</div>
-            <h3>Validá campo</h3>
-            <p>Chequeo rápido: densidad, distribución, escapes, cobertura y humedad superficial.</p>
-          </article>
-          <article class="step">
-            <div class="step__num">4</div>
-            <h3>Definí ventana</h3>
-            <p>Aplicá reglas por estado (ej. macollaje como umbral; alertas a 5 macollos).</p>
-          </article>
-        </div>
-
-        <div class="callout">
-          <div>
-            <h3>Consejo práctico</h3>
-            <p>
-              Si el modelo indica aceleración fenológica pero el lote está seco (o con estrés),
-              considerá el posible desacople TT–desarrollo y priorizá observación a campo.
-            </p>
-          </div>
-          <a class="btn btn--primary" href="#localidades">Ir a localidades</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- LOCALIDADES -->
-    <section id="localidades" class="section section--alt">
-      <div class="container">
-        <div class="section__head">
-          <h2>Localidades</h2>
-          <p>Acceso directo a cada pronóstico (abre en nueva pestaña).</p>
-        </div>
-
-        <div id="cards" class="cards"></div>
-      </div>
-    </section>
-
-    <!-- MAPA -->
-    <section id="mapa" class="section">
-      <div class="container">
-        <div class="section__head">
-          <h2>Mapa interactivo</h2>
-          <p>Hacé click en un marcador para abrir el pronóstico.</p>
-        </div>
-
-        <div class="mapWrap">
-          <div id="map"></div>
-          <div class="mapLegend">
-            <div class="legendRow"><span class="dot dot--green"></span> Localidad con acceso</div>
-            <div class="legendRow"><span class="dot dot--blue"></span> Área de referencia (BA)</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section section--alt">
-      <div class="container about">
-        <div>
-          <h2>Acerca de PREDWEEM</h2>
-          <p>
-            PREDWEEM integra modelos predictivos de emergencia y módulos operativos para soportar decisiones
-            de manejo de <em>Lolium multiflorum</em> por localidad, priorizando el uso agronómico:
-            claridad, trazabilidad y accionabilidad.
-          </p>
-          <p class="muted">
-            Este portal es el “hub” web: el cálculo y los tableros viven en tus apps Streamlit.
-          </p>
-        </div>
-
-        <div class="about__card">
-          <h3>Contacto / Proyecto</h3>
-          <p class="muted">Podés agregar aquí links a paper, GitHub, LinkedIn o documentación.</p>
-          <div class="about__actions">
-            <a class="btn btn--ghost" href="#" onclick="return false;">Documentación (próx.)</a>
-            <a class="btn btn--primary" href="#top">Volver arriba</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer__inner">
-      <span>© <span id="year"></span> PREDWEEM</span>
-      <span class="muted">Hecho para decisiones rápidas en campo.</span>
-    </div>
-  </footer>
+        var provinceBounds = [
+            [-34.5, -58.5], [-35.0, -63.0], [-41.0, -62.0], [-38.0, -57.0]
+        ];
+        L.polygon(provinceBounds, {color: 'blue', fillOpacity: 0.1}).addTo(map);
+    </script>
 </body>
 </html>
