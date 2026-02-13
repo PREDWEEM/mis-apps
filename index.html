@@ -140,17 +140,6 @@
 
         map.fitBounds(bounds, { padding: [50, 50] });
 
-        var provinceBounds = [
-            [-34.5, -58.5], [-35.0, -63.0], [-41.0, -62.0], [-38.0, -57.0]
-        ];
-        L.polygon(provinceBounds, {
-            color: '#007bff',
-            weight: 2,
-            opacity: 0.6,
-            fillOpacity: 0.05,
-            dashArray: '8, 8'
-        }).addTo(map);
-
         L.control.scale({ imperial: false }).addTo(map);
     </script>
 </body>
