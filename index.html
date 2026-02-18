@@ -105,7 +105,7 @@
             { coords: [-38.377,  -60.276],   name: "Tres Arroyos",           url: "https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/", title: "App Emergencia",          offsetY: -35 },
             { coords: [-37.846,  -58.258],   name: "Balcarce",                url: "https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/", title: "App Emergencia Combinada", offsetY: -35 },
             { coords: [-33.8910, -60.5746],  name: "Pergamino",               url: "https://appemergenciacombinadopy-zybjv3zntwavn8omppk9ba.streamlit.app/", title: "App Emergencia Combinada", offsetY: -35 },
-            { coords: [-38.447,  -61.566],   name: "Lartigau",                url: "https://appemergenciapy-fgqjxjuetqna3jpna3hkym.streamlit.app/", title: "App Emergencia",          offsetY: -20 }  // ← Más cerca (solo -20)
+            { coords: [-38.447,  -61.566],   name: "Lartigau",                url: "https://appemergenciapy-fgqjxjuetq2a3jpna3hkym.streamlit.app/", title: "App Emergencia",          offsetY: -20 }
         ];
 
         var bounds = L.latLngBounds();
@@ -115,7 +115,7 @@
                 .bindTooltip(loc.name, {
                     permanent: true,
                     direction: 'top',
-                    offset: L.point(0, loc.offsetY),  // valor personalizado por localidad
+                    offset: L.point(0, loc.offsetY),
                     className: 'city-label'
                 })
                 .bindPopup(`
