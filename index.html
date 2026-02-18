@@ -31,25 +31,18 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             margin-bottom: 2rem;
         }
-        /* Etiquetas de ciudades - base */
+        /* Etiquetas base - más pequeñas y limpias */
         .leaflet-tooltip.city-label {
-            background-color: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
+            background-color: rgba(255,255,255,0.75) !important; /* fondo semi-transparente para mejor legibilidad */
+            border: 1px solid #ccc !important;
+            border-radius: 4px !important;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.2) !important;
             color: #000 !important;
-            font-weight: 700;
-            font-size: 13px;          /* un poco más pequeño para reducir solapamiento */
+            font-weight: 600;
+            font-size: 12px;              /* reducido para minimizar solapamiento */
             padding: 2px 6px;
-            text-shadow: 
-                -1px -1px 0 #fff,
-                1px -1px 0 #fff,
-                -1px 1px 0 #fff,
-                1px 1px 0 #fff,
-                -2px 0 0 #fff,
-                2px 0 0 #fff,
-                0 -2px 0 #fff,
-                0 2px 0 #fff;
             white-space: nowrap;
+            opacity: 0.95;
         }
         .leaflet-tooltip.city-label::before {
             display: none !important;
@@ -110,12 +103,12 @@
         }).addTo(map);
 
         var locations = [
-            { coords: [-37.8036, -63.041],   name: "Bordenave",              url: "https://appemergenciacombinadopy-pft4j4e33dvonn4jsryzte.streamlit.app/", title: "App Emergencia Combinada", tooltipDir: 'top',    tooltipOffset: [0, -25] },
-            { coords: [-38.377,  -60.276],   name: "Tres Arroyos",           url: "https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/", title: "App Emergencia",          tooltipDir: 'top',    tooltipOffset: [0, -25] },
-            { coords: [-37.846,  -58.258],   name: "Balcarce",                url: "https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/", title: "App Emergencia Combinada", tooltipDir: 'right',  tooltipOffset: [10, -10] },
-            { coords: [-38.7196, -62.2724],  name: "Bahía Blanca",            url: "https://appemergenciapy-ejmxey8erpj3mb8s3dnavx.streamlit.app/", title: "App Emergencia",          tooltipDir: 'left',   tooltipOffset: [-10, -15] },
-            { coords: [-33.8910, -60.5746],  name: "Pergamino",               url: "https://appemergenciacombinadopy-zybjv3zntwavn8omppk9ba.streamlit.app/", title: "App Emergencia Combinada", tooltipDir: 'bottom', tooltipOffset: [0, 10] },
-            { coords: [-38.4472, -61.5655],  name: "Lartigau",                url: "https://appemergenciapy-fgqjxjuetq2a3jpna3hkym.streamlit.app/", title: "App Emergencia",          tooltipDir: 'right',  tooltipOffset: [15, -5]  }
+            { coords: [-37.8036, -63.041],   name: "Bordenave",              url: "https://appemergenciacombinadopy-pft4j4e33dvonn4jsryzte.streamlit.app/", title: "App Emergencia Combinada", dir: 'top',    offset: [0, -30]   },
+            { coords: [-38.377,  -60.276],   name: "Tres Arroyos",           url: "https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/", title: "App Emergencia",          dir: 'top',    offset: [0, -30]   },
+            { coords: [-37.846,  -58.258],   name: "Balcarce",                url: "https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/", title: "App Emergencia Combinada", dir: 'right',  offset: [15, -10]  },
+            { coords: [-38.7196, -62.2724],  name: "Bahía Blanca",            url: "https://appemergenciapy-ejmxey8erpj3mb8s3dnavx.streamlit.app/", title: "App Emergencia",          dir: 'bottom', offset: [0, 20]    },  // Cambiado a bottom para alejar de Lartigau
+            { coords: [-33.8910, -60.5746],  name: "Pergamino",               url: "https://appemergenciacombinadopy-zybjv3zntwavn8omppk9ba.streamlit.app/", title: "App Emergencia Combinada", dir: 'top',    offset: [0, -25]   },
+            { coords: [-38.447,  -61.566],   name: "Lartigau",                url: "https://appemergenciapy-fgqjxjuetqna3jpna3hkym.streamlit.app/", title: "App Emergencia",          dir: 'right',  offset: [20, -5]   }   // Más a la derecha y arriba
         ];
 
         var bounds = L.latLngBounds();
@@ -124,8 +117,8 @@
             var marker = L.marker(loc.coords).addTo(map)
                 .bindTooltip(loc.name, {
                     permanent: true,
-                    direction: loc.tooltipDir,
-                    offset: L.point(loc.tooltipOffset[0], loc.tooltipOffset[1]),
+                    direction: loc.dir,
+                    offset: L.point(loc.offset[0], loc.offset[1]),
                     className: 'city-label'
                 })
                 .bindPopup(`
@@ -140,7 +133,15 @@
             bounds.extend(marker.getLatLng());
         });
 
-        map.fitBounds(bounds, { padding: [60, 60] });  // un poco más de padding para mejor vista inicial
+        map.fitBounds(bounds, { padding: [80, 80] });  // Más padding → vista inicial más amplia, menos solapamiento
+
+        // Opcional: ocultar tooltips en zoom muy bajo (descomentar si querés)
+        // map.on('zoomend', function() {
+        //     var zoom = map.getZoom();
+        //     document.querySelectorAll('.leaflet-tooltip').forEach(function(el) {
+        //         el.style.display = (zoom < 9) ? 'none' : 'block';
+        //     });
+        // });
 
         L.control.scale({ imperial: false }).addTo(map);
     </script>
