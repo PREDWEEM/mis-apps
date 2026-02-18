@@ -31,18 +31,19 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             margin-bottom: 2rem;
         }
-        /* Etiquetas base - más pequeñas y limpias */
+        /* Etiquetas sobre las marcas - optimizadas */
         .leaflet-tooltip.city-label {
-            background-color: rgba(255,255,255,0.75) !important;
-            border: 1px solid #ccc !important;
+            background-color: rgba(255,255,255,0.85) !important;
+            border: 1px solid #aaa !important;
             border-radius: 4px !important;
-            box-shadow: 1px 1px 4px rgba(0,0,0,0.2) !important;
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.25) !important;
             color: #000 !important;
             font-weight: 600;
-            font-size: 12px;
-            padding: 2px 6px;
+            font-size: 12.5px;
+            padding: 3px 8px;
             white-space: nowrap;
             opacity: 0.95;
+            pointer-events: none; /* evita que interfiera con clics en marcadores */
         }
         .leaflet-tooltip.city-label::before {
             display: none !important;
@@ -103,11 +104,11 @@
         }).addTo(map);
 
         var locations = [
-            { coords: [-37.8036, -63.041],   name: "Bordenave",              url: "https://appemergenciacombinadopy-pft4j4e33dvonn4jsryzte.streamlit.app/", title: "App Emergencia Combinada", dir: 'top',    offset: [0, -30]   },
-            { coords: [-38.377,  -60.276],   name: "Tres Arroyos",           url: "https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/", title: "App Emergencia",          dir: 'top',    offset: [0, -30]   },
-            { coords: [-37.846,  -58.258],   name: "Balcarce",                url: "https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/", title: "App Emergencia Combinada", dir: 'right',  offset: [15, -10]  },
-            { coords: [-33.8910, -60.5746],  name: "Pergamino",               url: "https://appemergenciacombinadopy-zybjv3zntwavn8omppk9ba.streamlit.app/", title: "App Emergencia Combinada", dir: 'top',    offset: [0, -25]   },
-            { coords: [-38.447,  -61.566],   name: "Lartigau",                url: "https://appemergenciapy-fgqjxjuetqna3jpna3hkym.streamlit.app/", title: "App Emergencia",          dir: 'right',  offset: [20, -5]   }
+            { coords: [-37.8036, -63.041],   name: "Bordenave",              url: "https://appemergenciacombinadopy-pft4j4e33dvonn4jsryzte.streamlit.app/", title: "App Emergencia Combinada" },
+            { coords: [-38.377,  -60.276],   name: "Tres Arroyos",           url: "https://appemergenciapy-evagabxskaw7cqvwex2d3k.streamlit.app/", title: "App Emergencia"          },
+            { coords: [-37.846,  -58.258],   name: "Balcarce",                url: "https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/", title: "App Emergencia Combinada" },
+            { coords: [-33.8910, -60.5746],  name: "Pergamino",               url: "https://appemergenciacombinadopy-zybjv3zntwavn8omppk9ba.streamlit.app/", title: "App Emergencia Combinada" },
+            { coords: [-38.447,  -61.566],   name: "Lartigau",                url: "https://appemergenciapy-fgqjxjuetqna3jpna3hkym.streamlit.app/", title: "App Emergencia"          }
         ];
 
         var bounds = L.latLngBounds();
@@ -116,8 +117,8 @@
             var marker = L.marker(loc.coords).addTo(map)
                 .bindTooltip(loc.name, {
                     permanent: true,
-                    direction: loc.dir,
-                    offset: L.point(loc.offset[0], loc.offset[1]),
+                    direction: 'top',
+                    offset: L.point(0, -35),          // negativo en Y → etiqueta ARRIBA del marcador
                     className: 'city-label'
                 })
                 .bindPopup(`
