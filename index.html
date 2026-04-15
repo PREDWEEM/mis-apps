@@ -4,36 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PREDWEEM: Modelo Predictivo de Emergencia y Fenología de Lolium multiflorum</title>
-  
+ 
     <!-- Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  
+ 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  
+ 
     <!-- Google Fonts: Inter + Roboto -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  
+ 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         :root {
             --primary-green: #1a5f3f;
         }
-       
+      
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background: linear-gradient(180deg, #f8f9fa 0%, #f1f5f3 100%);
             color: #222;
         }
-       
+      
         .header-title {
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
             letter-spacing: -0.5px;
         }
-       
+      
         #map {
             height: 75vh;
             width: 100%;
@@ -42,7 +42,7 @@
             margin-bottom: 2.5rem;
             border: 1px solid rgba(26, 95, 63, 0.1);
         }
-       
+      
         .leaflet-tooltip.city-label {
             background-color: rgba(255,255,255,0.95) !important;
             border: none !important;
@@ -56,46 +56,46 @@
             opacity: 1;
             pointer-events: none;
         }
-       
+      
         .leaflet-popup-content {
             margin: 0;
             padding: 0;
         }
-       
+      
         .leaflet-popup-content h5 {
             color: var(--primary-green);
             margin-bottom: 12px;
             font-weight: 600;
         }
-       
+      
         .logo-img {
             max-width: 650px;
             width: 100%;
             height: auto;
             filter: drop-shadow(0 10px 20px rgba(26, 95, 63, 0.2));
         }
-       
+      
         .explanation-card {
             border: none;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(26, 95, 63, 0.1);
             background: white;
         }
-       
+      
         .step-card {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-       
+      
         .step-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 20px 40px rgba(26, 95, 63, 0.15);
         }
-       
+      
         .section-header {
             position: relative;
             display: inline-block;
         }
-       
+      
         .section-header::after {
             content: '';
             position: absolute;
@@ -106,7 +106,7 @@
             left: 0;
             border-radius: 4px;
         }
-       
+      
         @media (max-width: 576px) {
             .logo-img {
                 max-width: 380px;
@@ -115,7 +115,7 @@
                 height: 65vh;
             }
         }
-       
+      
         .modern-divider {
             height: 2px;
             background: linear-gradient(to right, transparent, #1a5f3f20, transparent);
@@ -125,24 +125,24 @@
 </head>
 <body class="bg-light">
     <div class="container py-5">
-       
+      
         <!-- HEADER -->
         <header class="text-center mb-5">
             <img src="logo.png" alt="PREDWEEM by Guillermo R. Chantre" class="img-fluid logo-img mb-4">
-           
+          
             <h1 class="header-title display-5 text-dark mb-3">
                 PREDWEEM <span class="text-success">vK4.9.8</span>
             </h1>
-           
+          
             <p class="lead col-lg-9 mx-auto fs-4 text-dark">
                 Herramienta interactiva de <strong>agricultura de precisión</strong> para la predicción de emergencia y fenología de
                 <em>Lolium multiflorum</em> (raigrás anual).
             </p>
-           
+          
             <p class="text-muted col-lg-8 mx-auto mb-4">
                 Haz clic en los marcadores del mapa para acceder a las aplicaciones predictivas específicas de cada localidad.
             </p>
-           
+          
             <div class="d-flex justify-content-center gap-3 flex-wrap">
                 <span class="badge bg-success bg-opacity-10 text-success px-3 py-2 fs-6 rounded-3">
                     <i class="bi bi-cpu-fill me-1"></i> Inteligencia Artificial
@@ -164,11 +164,11 @@
         <div class="explanation-card p-5 mt-4">
             <div class="row justify-content-center">
                 <div class="col-12 col-xl-10">
-                   
+                  
                     <h2 class="section-header h2 text-center mb-5 fw-semibold text-dark">
                         ¿Qué es PREDWEEM y para qué sirve?
                     </h2>
-                   
+                  
                     <p class="lead text-center mb-5 fs-5">
                         PREDWEEM es una herramienta gratuita y fácil de usar (funciona en cualquier navegador) que, a partir de datos climáticos cotidianos
                         (temperatura máxima y mínima, lluvia y fecha), predice <strong>día a día</strong> la tasa de emergencia de <em>Lolium sp.</em>
@@ -181,7 +181,7 @@
                         ¿Cómo funciona?
                     </h3>
                     <p class="lead mb-4">El programa sigue cuatro pasos simples pero muy potentes:</p>
-                   
+                  
                     <!-- Pasos en cards modernas -->
                     <div class="row g-4 mb-5">
                         <div class="col-md-6 col-lg-3">
@@ -281,7 +281,7 @@
             zoomControl: true,
             attributionControl: true
         });
-       
+      
         L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
             subdomains: 'abcd',
@@ -294,10 +294,11 @@
             { coords: [-37.846, -58.258], name: "Balcarce", url: "https://appemergenciacombinadopy-a5mxrfx78y2hedmzqsy4bx.streamlit.app/", title: "App Emergencia Combinada", offsetY: -35 },
             { coords: [-33.8910, -60.5746], name: "Pergamino", url: "https://appemergenciacombinadopy-zybjv3zntwavn8omppk9ba.streamlit.app/", title: "App Emergencia Combinada", offsetY: -35 },
             { coords: [-36.778, -59.8585], name: "Azul", url: "https://appemergenciacombinadopy-a5e2avvvuf3opkb55cwi5v.streamlit.app/", title: "App Emergencia Combinada", offsetY: -35 },
+            { coords: [-36.893, -60.323], name: "Olavarría", url: "https://appemergenciacombinadopy-bxr8ukzuet49zn7yfjyqhr.streamlit.app/", title: "App Emergencia Combinada", offsetY: -35 },
             { coords: [-38.447, -61.566], name: "Lartigau", url: "https://appemergenciapy-fgqjxjuetq2a3jpna3hkym.streamlit.app/", title: "App Emergencia", offsetY: -20 }
         ];
         var bounds = L.latLngBounds();
-       
+      
         locations.forEach(function(loc) {
             var marker = L.marker(loc.coords, {
                 riseOnHover: true
@@ -320,7 +321,7 @@
         });
         map.fitBounds(bounds, { padding: [90, 90] });
         L.control.scale({ imperial: false, position: 'bottomright' }).addTo(map);
-       
+      
         console.log('%c✅ PREDWEEM Web Map cargado correctamente', 'color:#1a5f3f; font-weight:bold');
     </script>
 </body>
