@@ -1,0 +1,77 @@
+name: Add PREDWEEM rights footer
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .github/workflows/add_rights_footer.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-footer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Add visible rights notice
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path("index.html")
+          text = path.read_text(encoding="utf-8")
+
+          if "Copyright © 2026 Guillermo R. Chantre / PREDWEEM." in text:
+              print("El aviso de derechos ya está presente.")
+              raise SystemExit(0)
+
+          old = '''        <!-- FOOTER -->
+                  <footer class="text-center text-muted mt-5 pt-4">
+                      <small>
+                          Mapa basado en OpenStreetMap contributors &amp; CARTO •
+                          Modelos desarrollados para apoyo en la toma de decisiones agronómicas •
+                          PREDWEEM vK4.9.8 — 2026
+                      </small>
+                  </footer>'''
+
+          new = '''        <!-- FOOTER -->
+                  <footer class="text-center text-muted mt-5 pt-4">
+                      <small>
+                          Mapa basado en OpenStreetMap contributors &amp; CARTO •
+                          Modelos desarrollados para apoyo en la toma de decisiones agronómicas •
+                          PREDWEEM vK4.9.8 — 2026
+                          <br>
+                          <strong>Copyright © 2026 Guillermo R. Chantre / PREDWEEM.</strong>
+                          Todos los derechos reservados.
+                          <br>
+                          El uso, reproducción, modificación, redistribución o explotación comercial
+                          requiere autorización previa y escrita del titular de los derechos correspondientes.
+                      </small>
+                  </footer>'''
+
+          if old not in text:
+              raise RuntimeError("No se encontró el bloque footer esperado en index.html")
+
+          path.write_text(text.replace(old, new, 1), encoding="utf-8")
+          print("Aviso de derechos incorporado al footer.")
+          PY
+
+      - name: Commit rights notice
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No hay cambios para guardar."
+            exit 0
+          fi
+          git commit -m "Agregar derechos de PREDWEEM al pie de página"
+          git push origin HEAD:${{ github.head_ref }}
